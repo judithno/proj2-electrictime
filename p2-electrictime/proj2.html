@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- carousel reference: https://freefrontend.com/css-carousels/#horizontal-carousels -->
+<html>
+    <head>
+        <link rel="stylesheet" href="proj2style.css">
+    </head>
+
+    <body>
+        <form class="text">
+            <label id='label' for="miles">Distance in miles:</label>
+            <input type="number" id="miles" name="miles" pattern="[0-9]+" placeholder="Distance in miles">
+        </form>
+        <button id="input"> Submit </button>
+        <div id="results">
+            <table>
+                <tr>
+                  <th>Transportation</th>
+                  <th>Time(min)</th>
+                </tr>
+                <tr id="row-one">
+                  <td>Walking</td>
+                  <td id="one"></td>
+                </tr>
+                <tr id="row-two">
+                  <td>Skateboard</td>
+                  <td id="two"></td>
+                </tr>
+                <tr id="row-three">
+                  <td>Segway</td>
+                  <td id="three"></td>
+                </tr>
+                <tr id="row-four">
+                  <td>Scooter</td>
+                  <td id="four"></td>
+                </tr>
+                <tr id="row-five">
+                  <td>Hoverboard</td>
+                  <td id="five"></td>
+                </tr>
+              </table>
+        </div>
+
+        <input id="walk" type="radio" name="position" checked />
+        <input id="skateboard" type="radio" name="position" />
+        <input id="segway" type="radio" name="position" />
+        <input id="scooter" type="radio" name="position" />
+        <input id="hoverboard" type="radio" name="position" />
+        <main id="carousel">
+
+        <div class="item">
+            <img src = 'images/walk.png'>
+            <div id="walk2">
+                <h3>Walking</h3>
+                <p>3.1 miles per hour</p>
+            </div>      
+        </div>
+
+        <div class="item">
+            <img src = 'images/skateboard.png'>
+            <div id="skateboard2">
+                <h3>Evolve Bamboo GTR <br>Skateboard</h3>
+                <p>27 miles per hour</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src = 'images/segway.png'>
+            <div id="segway2">
+                <h3>Segway Ninebot S-PLUS</h3>
+                <p>12 miles per hour</p>
+            </div>   
+        </div>
+
+        <div class="item">
+            <img src = 'images/scooter.png'>
+            <div id="scooter2">
+                <h3>Razor Metro HD Scooter</h3>
+                <p>15.5 miles per hour</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src = 'images/hoverboard.png'>
+            <div id="hoverboard2">
+                <h3>Hovertrax Hoverboard</h3>
+                <p>9 miles per hour</p>
+            </div>       
+        </div>
+        <main>
+
+    </body>
+</html>
+
+
+
+<script>
+
+const submit = document.getElementById('input')
+submit.addEventListener('click', function() {
+    const table = document.getElementById('results');
+    table.style.display = 'inline';
+
+    var userinput = document.getElementById('miles').value;
+    console.log(userinput);
+    // alert(userinput);
+    
+    const times = [];
+    const speeds = [3.1, 27, 12, 15.5, 9];
+    for (i in speeds) {
+        times.push(Math.round((userinput/speeds[i])*60));
+    }
+
+    const rows = ['one', 'two', 'three', 'four', 'five'];
+    for (i in rows) {
+        var thisrow = document.getElementById(rows[i]);
+        thisrow.innerHTML = times[i];
+    }
+})
+
+</script>
